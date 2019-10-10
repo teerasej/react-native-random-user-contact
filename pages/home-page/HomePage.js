@@ -9,11 +9,15 @@ export class HomePage extends Component {
         title: 'Contacts'  
     };
 
+    openDetail = () => {
+        this.props.navigation.navigate('Detail');
+    }
+
     render() {
         return (
             <Content padder>
                 <List>
-                    <ListItem>
+                    <ListItem button onPress={() => this.openDetail()}>
                         <Text>Hello</Text>
                     </ListItem>
                 </List>
