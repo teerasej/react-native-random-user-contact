@@ -26,6 +26,7 @@ export class DetailPage extends Component {
                     </ListItem>
                 </List>
                 <Button iconLeft block 
+                onPress={() => this.props.call(user.phone)}
                 style={{
                     marginTop: 10
                 }}>
@@ -41,8 +42,10 @@ const mapStateToProps = (state) => ({
     selectedUser: state.app.selectedUser
 })
 
-const mapDispatchToProps = {
-
+const mapDispatchToProps = dispatch => {
+    return {
+        call: (phoneNumber) => actions.makeCall(phoneNumber)
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailPage)
