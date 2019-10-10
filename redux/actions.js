@@ -3,7 +3,7 @@ const Types = {
     GET_USERS_SUCCESS: 'GET_USERS_SUCCESS'
 }
 
-const startGetUser = (dispatch) => {
+const startGetUser = async (dispatch) => {
 
     const url = 'https://randomuser.me/api/?results=50';
 
