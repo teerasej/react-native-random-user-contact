@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { Content, List, ListItem, Text, Body, Button, Icon, Left, Thumbnail, Right } from 'native-base';
+import { Content, List, ListItem, Text, Body, Button, Icon, Left, Right, Thumbnail } from 'native-base';
 import actions from "../../redux/actions";
 
 export class HomePage extends Component {

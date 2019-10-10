@@ -3,6 +3,8 @@ import { View } from 'react-native'
 import { Content, List, ListItem, Text, Body, Button, Icon } from 'native-base';
 import { connect } from 'react-redux'
 
+import actions from "../../redux/actions";
+
 export class DetailPage extends Component {
 
     static navigationOptions = {
