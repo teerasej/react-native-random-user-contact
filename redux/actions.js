@@ -1,6 +1,7 @@
 
 const Types = {
-    GET_USERS_SUCCESS: 'GET_USERS_SUCCESS'
+    GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
+    USER_SELECTED: 'USER_SELECTED'
 }
 
 const startGetUser = async (dispatch) => {
@@ -31,11 +32,15 @@ const startGetUser = async (dispatch) => {
     }
 }
 
-const startGetUser = async (dispatch) => {
-
+const selectUser = async (user) => {
+    return {
+        type: Types.USER_SELECTED,
+        payload: user
+    }
 }
 
 export default {
     Types,
-    startGetUser
+    startGetUser,
+    selectUser
 }
