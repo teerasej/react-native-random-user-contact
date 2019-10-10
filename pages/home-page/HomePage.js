@@ -14,7 +14,8 @@ export class HomePage extends Component {
         this.props.startGetUser();
     }
 
-    openDetail = () => {
+    openDetail = (user) => {
+        this.props.selectUser(user);
         this.props.navigation.navigate('Detail');
     }
 
@@ -32,7 +33,8 @@ export class HomePage extends Component {
                             return (
                                 <ListItem thumbnail
                                     button
-                                    onPress={() => this.props.selectUser(item)}
+                                    key={index}
+                                    onPress={() => {this.openDetail(item)}}
                                 >
                                     <Left>
                                         <Thumbnail source={{ uri: item.picture.thumbnail }} />
@@ -59,7 +61,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
     startGetUser: () => actions.startGetUser(dispatch),
-    selectUser: (user) => actions.selectUser(user)
+    selectUser: (user) => dispatch(actions.selectUser(user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
