@@ -21,7 +21,7 @@ export class HomePage extends Component {
     render() {
 
         if(this.props.users == undefined){
-            return <Text></Text>
+            return <Text>Loading</Text>
         }
 
         return (
