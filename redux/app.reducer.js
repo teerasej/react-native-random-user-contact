@@ -1,12 +1,14 @@
-const initialState = {
+import actions from "./actions"
 
+const initialState = {
+    
 }
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
 
-    case '':
-        return { ...state, ...payload }
+    case actions.Types.GET_USERS_SUCCESS:
+        return { ...state, users: [ ...payload] }
 
     default:
         return state
