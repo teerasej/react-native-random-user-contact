@@ -32,7 +32,7 @@ const startGetUser = async (dispatch) => {
     }
 }
 
-const selectUser = async (user) => {
+const selectUser = (user) => {
     return {
         type: Types.USER_SELECTED,
         payload: user
