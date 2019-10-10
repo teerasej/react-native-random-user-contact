@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { Content, List, ListItem, Text, Body, Button, Icon } from 'native-base';
+import { Content, List, ListItem, Text, Body, Button, Icon, Left, Thumbnail, Right } from 'native-base';
 import actions from "../../redux/actions";
 
 export class HomePage extends Component {
-    
+
     static navigationOptions = {
-        title: 'Contacts'  
+        title: 'Contacts'
     };
 
     componentDidMount() {
@@ -19,12 +19,31 @@ export class HomePage extends Component {
     }
 
     render() {
+
+        if(this.props.users == undefined){
+            return <Text></Text>
+        }
+
         return (
-            <Content padder>
+            <Content>
                 <List>
-                    <ListItem button onPress={() => this.openDetail()}>
-                        <Text>Hello</Text>
-                    </ListItem>
+                    {
+                        this.props.users.map((item, index) => {
+                            return (
+                                <ListItem thumbnail>
+                                    <Left>
+                                        <Thumbnail source={{ uri: item.picture.thumbnail }} />
+                                    </Left>
+                                    <Body>
+                                        <Text>{item.name.first} {item.name.last}</Text>
+                                        <Text note>{item.phone}</Text>
+                                    </Body>
+                                    <Right></Right>
+                                </ListItem>
+                            )
+                        })
+                    }
+
                 </List>
             </Content>
         )
@@ -32,7 +51,7 @@ export class HomePage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+    users: state.app.users
 })
 
 const mapDispatchToProps = dispatch => ({
