@@ -12,14 +12,17 @@ export class DetailPage extends Component {
     };
 
     render() {
+
+        const user = this.props.selectedUser;
+
         return (
             <Content padder>
                 <List>
                     <ListItem>
-                        <Text>ชื่อ:</Text>
+                        <Text>ชื่อ: {user.name.first}</Text>
                     </ListItem>
                     <ListItem>
-                        <Text>นามสกุล:</Text>
+                        <Text>นามสกุล: {user.name.last}</Text>
                     </ListItem>
                 </List>
                 <Button iconLeft block 
@@ -27,7 +30,7 @@ export class DetailPage extends Component {
                     marginTop: 10
                 }}>
                     <Icon name="call" />
-                    <Text>โทร: </Text>
+                    <Text>โทร: {user.phone}</Text>
                 </Button>
             </Content>
         )
@@ -35,7 +38,7 @@ export class DetailPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    selectedUser: state.app.selectedUser
 })
 
 const mapDispatchToProps = {
