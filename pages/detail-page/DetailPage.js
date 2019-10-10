@@ -4,9 +4,9 @@ import { Content, List, ListItem, Text, Body, Button, Icon } from 'native-base';
 import { connect } from 'react-redux'
 
 export class DetailPage extends Component {
-  
+
     static navigationOptions = {
-        title: 'Detail'  
+        title: 'Detail'
     };
 
     render() {
@@ -19,24 +19,25 @@ export class DetailPage extends Component {
                     <ListItem>
                         <Text>นามสกุล:</Text>
                     </ListItem>
-                    <ListItem>
-                        <Button iconLeft>
-                            <Icon name="phone"/>
-                            <Text>โทร: </Text>
-                        </Button>
-                    </ListItem>
                 </List>
+                <Button iconLeft block 
+                style={{
+                    marginTop: 10
+                }}>
+                    <Icon name="call" />
+                    <Text>โทร: </Text>
+                </Button>
             </Content>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    
+
 })
 
 const mapDispatchToProps = {
-    
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailPage)
