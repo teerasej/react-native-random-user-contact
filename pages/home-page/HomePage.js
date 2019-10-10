@@ -30,7 +30,10 @@ export class HomePage extends Component {
                     {
                         this.props.users.map((item, index) => {
                             return (
-                                <ListItem thumbnail>
+                                <ListItem thumbnail
+                                    button
+                                    onPress={() => this.props.selectUser(item)}
+                                >
                                     <Left>
                                         <Thumbnail source={{ uri: item.picture.thumbnail }} />
                                     </Left>
@@ -55,7 +58,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    startGetUser: () => actions.startGetUser(dispatch)
+    startGetUser: () => actions.startGetUser(dispatch),
+    selectUser: (user) => actions.selectUser(user)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
