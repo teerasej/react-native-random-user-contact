@@ -6,9 +6,6 @@ import actions from "../../redux/actions";
 
 export class HomePage extends Component {
 
-    static navigationOptions = {
-        title: 'Contacts'
-    };
 
     componentDidMount() {
         this.props.startGetUser();
