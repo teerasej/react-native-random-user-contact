@@ -1,4 +1,4 @@
-import actions from "../../redux/actions";
+import actions from "./actions";
 
 const initialState = {
 
