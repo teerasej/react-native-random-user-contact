@@ -31,9 +31,6 @@ const startGetUser = async (dispatch) => {
     }
 }
 
-const startGetUser = async (dispatch) => {
-
-}
 
 export default {
     Types,
