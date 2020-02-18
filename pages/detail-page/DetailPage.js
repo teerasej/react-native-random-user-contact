@@ -7,9 +7,6 @@ import actions from "../../redux/actions";
 
 export class DetailPage extends Component {
 
-    static navigationOptions = {
-        title: 'Detail'
-    };
 
     render() {
         return (
