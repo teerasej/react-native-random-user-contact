@@ -7,7 +7,7 @@ import actions from "../../redux/actions";
 export class HomePage extends Component {
 
     componentDidMount() {
-        this.props.startGetUser();
+        
     }
 
     openDetail = (user) => {
@@ -58,7 +58,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    startGetUser: () => actions.startGetUser(dispatch),
+    
     selectUser: (user) => dispatch(actions.selectUser(user))
 })
 
