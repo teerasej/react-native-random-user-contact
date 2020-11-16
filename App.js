@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import HomePage from "./pages/home-page/HomePage";
 import DetailPage from './pages/detail-page/DetailPage';
 
+// config ส่วน navigation
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 // config ส่วน redux
