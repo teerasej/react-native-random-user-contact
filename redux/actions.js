@@ -7,9 +7,9 @@ const Types = {
 }
 
 const startGetUser = async (dispatch) => {
-
     const url = 'https://randomuser.me/api/?results=50';
 
+    
     const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -32,6 +32,7 @@ const startGetUser = async (dispatch) => {
     } else {
         console.error(response.status, response);
     }
+    
 }
 
 const selectUser = (user) => {

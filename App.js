@@ -13,18 +13,9 @@ import configureStore from "./redux/store";
 const store = configureStore();
 
 // config ส่วน navigation
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-
-
-const AppNavigator = createStackNavigator(
-  {
-    Home: { screen: HomePage },
-    Detail: { screen: DetailPage },
-  }
-);
-
-const AppContainer = createAppContainer(AppNavigator);
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
 
 
 export default class App extends React.Component {
@@ -52,7 +43,15 @@ export default class App extends React.Component {
 
     return (
       <Provider store={store}>
-        <AppContainer />
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen 
+                name="Home" 
+                component={HomePage} 
+              />
+              <Stack.Screen name="Detail" component={DetailPage} />
+            </Stack.Navigator>
+          </NavigationContainer>
       </Provider>
     );
   }
