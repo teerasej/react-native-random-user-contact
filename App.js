@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { Container, Text } from 'native-base';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+import { useEffectAsync } from 'useeffectasync'
 import HomePage from "./pages/home-page/HomePage";
 import DetailPage from './pages/detail-page/DetailPage';
 
