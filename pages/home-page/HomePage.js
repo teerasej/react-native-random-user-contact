@@ -1,37 +1,50 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
-import { connect } from 'react-redux'
-import { Container,Content, List, ListItem, Text, Body, Button, Icon, Left, Right, Thumbnail } from 'native-base';
-import actions from "../../redux/actions";
+import { useDispatch, useSelector } from 'react-redux'
+import { Container, Content, List, ListItem, Text, Body, Button, Icon, Left, Right, Thumbnail, Spinner } from 'native-base';
+import { Types } from "../../redux/actions";
+import { startGetUser } from '../../redux/action-start-get-user';
+import { useEffectAsync } from 'useeffectasync';
 
-export class HomePage extends Component {
+export default function HomePage({ navigation }) {
 
-    componentDidMount() {
-        this.props.startGetUser();
+
+    const users = useSelector(state => state.users)
+    console.log('users', users)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        startGetUser(dispatch)
+    }, [])
+
+
+    const openDetail = (user) => {
+        dispatch({
+            type: Types.USER_SELECTED,
+            payload: user
+        })
+        navigation.navigate('Detail');
     }
 
-    openDetail = (user) => {
-        this.props.selectUser(user);
-        this.props.navigation.navigate('Detail');
-    }
 
-    render() {
 
-        if(this.props.users == undefined){
-            return <Text>Loading</Text>
-        }
-
+    if (!users) {
         return (
-            <Container>
+            <Spinner/>
+        )
+    }
+
+    return (
+        <Container>
             <Content>
                 <List>
                     {
-                        this.props.users.map((item, index) => {
+                        users.map((item, index) => {
                             return (
                                 <ListItem thumbnail
                                     button
                                     key={index}
-                                    onPress={() => {this.openDetail(item)}}
+                                    onPress={() => { openDetail(item) }}
                                 >
                                     <Left>
                                         <Thumbnail source={{ uri: item.picture.thumbnail }} />
@@ -48,18 +61,7 @@ export class HomePage extends Component {
 
                 </List>
             </Content>
-            </Container>
-        )
-    }
+        </Container>
+    )
 }
 
-const mapStateToProps = (state) => ({
-    users: state.app.users
-})
-
-const mapDispatchToProps = dispatch => ({
-    startGetUser: () => actions.startGetUser(dispatch),
-    selectUser: (user) => dispatch(actions.selectUser(user))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

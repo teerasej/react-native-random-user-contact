@@ -1,48 +1,34 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import { Content, List, ListItem, Text, Body, Button, Icon } from 'native-base';
-import { connect } from 'react-redux'
+import {  useSelector } from 'react-redux'
 
 import actions from "../../redux/actions";
+import { makeCall } from '../../redux/action-make-call';
 
-export class DetailPage extends Component {
+export default function DetailPage() {
+
+    const user = useSelector(state => state.selectedUser)
 
 
-    render() {
-
-        const user = this.props.selectedUser;
-
-        return (
-            <Content padder>
-                <List>
-                    <ListItem>
-                        <Text>ชื่อ: {user.name.first}</Text>
-                    </ListItem>
-                    <ListItem>
-                        <Text>นามสกุล: {user.name.last}</Text>
-                    </ListItem>
-                </List>
-                <Button iconLeft block 
-                onPress={() => this.props.call(user.phone)}
+    return (
+        <Content padder>
+            <List>
+                <ListItem>
+                    <Text>ชื่อ: {user.name.first}</Text>
+                </ListItem>
+                <ListItem>
+                    <Text>นามสกุล: {user.name.last}</Text>
+                </ListItem>
+            </List>
+            <Button iconLeft block
+                onPress={() => { makeCall(user.phone) }}
                 style={{
                     marginTop: 10
                 }}>
-                    <Icon name="call" />
-                    <Text>โทร: {user.phone}</Text>
-                </Button>
-            </Content>
-        )
-    }
+                <Icon name="call" />
+                <Text>โทร: {user.phone}</Text>
+            </Button>
+        </Content>
+    )
 }
-
-const mapStateToProps = (state) => ({
-    selectedUser: state.app.selectedUser
-})
-
-const mapDispatchToProps = dispatch => {
-    return {
-        call: (phoneNumber) => actions.makeCall(phoneNumber)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DetailPage)
