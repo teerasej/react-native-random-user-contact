@@ -4,8 +4,8 @@ import { Container, Text } from 'native-base';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { useEffectAsync } from 'useeffectasync'
-import HomePage from "./pages/home-page/HomePage";
-import DetailPage from './pages/detail-page/DetailPage';
+import HomePage from "./pages/HomePage";
+import DetailPage from './pages/DetailPage';
 
 // config ส่วน navigation
 import { NavigationContainer } from '@react-navigation/native';

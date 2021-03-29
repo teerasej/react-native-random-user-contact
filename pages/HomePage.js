@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { Container, Content, List, ListItem, Text, Body, Button, Icon, Left, Right, Thumbnail, Spinner } from 'native-base';
-import { Types } from "../../redux/actions";
-import { startGetUser } from '../../redux/action-start-get-user';
+import { Types } from "../redux/actions";
+import { startGetUser } from '../redux/action-start-get-user';
 import { useEffectAsync } from 'useeffectasync';
 
 export default function HomePage({ navigation }) {

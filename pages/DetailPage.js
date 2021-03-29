@@ -3,8 +3,8 @@ import { View } from 'react-native'
 import { Content, List, ListItem, Text, Body, Button, Icon } from 'native-base';
 import {  useSelector } from 'react-redux'
 
-import actions from "../../redux/actions";
-import { makeCall } from '../../redux/action-make-call';
+import { Type } from "../redux/actions";
+import { makeCall } from '../redux/action-make-call';
 
 export default function DetailPage() {
 
