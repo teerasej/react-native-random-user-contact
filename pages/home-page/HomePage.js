@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, Content, List, ListItem, Text, Body, Left, Right, Thumbnail } from 'native-base';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/core';
-import { createAction_UserSelected } from '../../redux/actions';
+import { createAction_UserSelected, startGetUser } from '../../redux/actions';
 
 export default function HomePage() {
 
@@ -11,6 +11,12 @@ export default function HomePage() {
     const navigation = useNavigation()
 
     const users = useSelector(state => state.users)
+
+    useEffect(() => {
+
+        startGetUser(dispatch)
+
+    }, [])
 
     const openDetail = (user) => {
         dispatch(createAction_UserSelected(user))
