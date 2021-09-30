@@ -32,12 +32,12 @@ export default function HomePage() {
             <Content>
                 <List>
                     {
-                        this.props.users.map((item, index) => {
+                        users.map((item, index) => {
                             return (
                                 <ListItem thumbnail
                                     button
                                     key={index}
-                                    onPress={() => { this.openDetail(item) }}
+                                    onPress={() => { openDetail(item) }}
                                 >
                                     <Left>
                                         <Thumbnail source={{ uri: item.picture.thumbnail }} />
