@@ -1,4 +1,5 @@
-import actions from "./actions"
+import { actionTypes } from "./actions"
+
 
 const initialState = {
     
@@ -7,10 +8,10 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
     switch (type) {
 
-    case actions.Types.GET_USERS_SUCCESS:
+    case actionTypes.GET_USERS_SUCCESS:
         return { ...state, users: [ ...payload] }
 
-    case actions.Types.USER_SELECTED: 
+    case actionTypes.USER_SELECTED: 
         return { ...state, selectedUser: payload }
 
     default:

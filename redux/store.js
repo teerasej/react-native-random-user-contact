@@ -1,7 +1,7 @@
 
 import { createStore, combineReducers } from 'redux';
 
-import appReducer from "./app.reducer";
+import reducer from "./reducer";
 
 export default function configureStore() {
     const store = createStore(
