@@ -10,10 +10,10 @@ export default function HomePage() {
     const dispatch = useDispatch()
     const navigation = useNavigation()
 
-    const users = useSelector(state => state.users)
+    const users = undefined
 
     const openDetail = (user) => {
-        dispatch(createAction_UserSelected(user))
+        
         navigation.navigate('Detail')
     }
 
