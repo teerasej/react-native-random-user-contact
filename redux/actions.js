@@ -1,30 +1,24 @@
 
 import call from 'react-native-phone-call'
 
-const Types = {
+export const actionTypes = {
     GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
     USER_SELECTED: 'USER_SELECTED'
 }
 
-const startGetUser = async (dispatch) => {
+export const startGetUser = async (dispatch) => {
     const url = 'https://randomuser.me/api/?results=50';
 
 }
 
-const selectUser = (user) => {
+export const createAction_UserSelected = (user) => {
     return {
-        type: Types.USER_SELECTED,
+        type: actionTypes.USER_SELECTED,
         payload: user
     }
 }
 
-const makeCall = (phoneNumber) => {
+export const makeCall = (phoneNumber) => {
     call({number: phoneNumber}).catch(console.error);
 }
 
-export default {
-    Types,
-    startGetUser,
-    selectUser,
-    makeCall
-}
