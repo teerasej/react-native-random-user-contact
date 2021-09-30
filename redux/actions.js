@@ -1,6 +1,18 @@
 
+import call from 'react-native-phone-call'
+
 export const actionTypes = {
-    GET_USERS_SUCCESS: 'GET_USERS_SUCCESS'
+    GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
+    USER_SELECTED: 'USER_SELECTED'
+}
+
+
+
+export const createAction_UserSelected = (user) => {
+    return {
+        type: actionTypes.USER_SELECTED,
+        payload: user
+    }
 }
 
 export const startGetUser = async (dispatch) => {
@@ -36,4 +48,13 @@ export const startGetUser = async (dispatch) => {
         console.error(response.status, response);
     }
 
+}
+
+export const makeCall = (phoneNumber) => {
+    
+    let pattern = '[-()]'
+    let regex = new RegExp(pattern,'g')
+    let phoneNumberClean = phoneNumber.replace(regex,'')
+
+    call({number: phoneNumberClean}).catch(console.error)
 }
