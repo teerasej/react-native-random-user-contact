@@ -19,6 +19,6 @@ export const createAction_UserSelected = (user) => {
 }
 
 export const makeCall = (phoneNumber) => {
-    call({number: phoneNumber}).catch(console.error);
+    //call({number: phoneNumber}).catch(console.error);
 }
 
