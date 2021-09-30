@@ -1,48 +1,36 @@
-import React, { Component } from 'react'
-import { View } from 'react-native'
-import { Content, List, ListItem, Text, Body, Button, Icon } from 'native-base';
-import { connect } from 'react-redux'
+import React from 'react'
+import { Content, List, ListItem, Text, Button, Icon } from 'native-base';
 
-import actions from "../../redux/actions";
+import { makeCall } from "../../redux/actions";
+import { useSelector } from 'react-redux';
 
-export class DetailPage extends Component {
+export default function DetailPage() {
 
+    const selectedUser = useSelector(state => state.selectedUser)
 
-    render() {
+    const callUser = (phoneNumber) => {
+        makeCall(phoneNumber)
+    }
 
-        const user = this.props.selectedUser;
-
-        return (
-            <Content padder>
-                <List>
-                    <ListItem>
-                        <Text>ชื่อ: {user.name.first}</Text>
-                    </ListItem>
-                    <ListItem>
-                        <Text>นามสกุล: {user.name.last}</Text>
-                    </ListItem>
-                </List>
-                <Button iconLeft block 
-                onPress={() => this.props.call(user.phone)}
+    return (
+        <Content padder>
+            <List>
+                <ListItem>
+                    <Text>ชื่อ: {selectedUser.name.first}</Text>
+                </ListItem>
+                <ListItem>
+                    <Text>นามสกุล: {selectedUser.name.last}</Text>
+                </ListItem>
+            </List>
+            <Button iconLeft block
+                onPress={() => callUser(selectedUser.phone)}
                 style={{
                     marginTop: 10
                 }}>
-                    <Icon name="call" />
-                    <Text>โทร: {user.phone}</Text>
-                </Button>
-            </Content>
-        )
-    }
+                <Icon name="call" />
+                <Text>โทร: {selectedUser.phone}</Text>
+            </Button>
+        </Content>
+    )
+
 }
-
-const mapStateToProps = (state) => ({
-    selectedUser: state.app.selectedUser
-})
-
-const mapDispatchToProps = dispatch => {
-    return {
-        call: (phoneNumber) => actions.makeCall(phoneNumber)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DetailPage)

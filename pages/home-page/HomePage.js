@@ -1,28 +1,28 @@
-import React, { Component } from 'react'
-import { View } from 'react-native'
-import { connect } from 'react-redux'
-import { Container,Content, List, ListItem, Text, Body, Button, Icon, Left, Right, Thumbnail } from 'native-base';
-import actions from "../../redux/actions";
+import React from 'react'
+import { Container, Content, List, ListItem, Text, Body, Left, Right, Thumbnail } from 'native-base';
 
-export class HomePage extends Component {
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/core';
+import { createAction_UserSelected } from '../../redux/actions';
 
-    componentDidMount() {
-        
+export default function HomePage() {
+
+    const dispatch = useDispatch()
+    const navigation = useNavigation()
+
+    const users = useSelector(state => state.users)
+
+    const openDetail = (user) => {
+        dispatch(createAction_UserSelected(user))
+        navigation.navigate('Detail')
     }
 
-    openDetail = (user) => {
-        this.props.selectUser(user);
-        this.props.navigation.navigate('Detail');
+    if (users == undefined) {
+        return <Text>Loading</Text>
     }
 
-    render() {
-
-        if(this.props.users == undefined){
-            return <Text>Loading</Text>
-        }
-
-        return (
-            <Container>
+    return (
+        <Container>
             <Content>
                 <List>
                     {
@@ -31,7 +31,7 @@ export class HomePage extends Component {
                                 <ListItem thumbnail
                                     button
                                     key={index}
-                                    onPress={() => {this.openDetail(item)}}
+                                    onPress={() => { this.openDetail(item) }}
                                 >
                                     <Left>
                                         <Thumbnail source={{ uri: item.picture.thumbnail }} />
@@ -45,21 +45,8 @@ export class HomePage extends Component {
                             )
                         })
                     }
-
                 </List>
             </Content>
-            </Container>
-        )
-    }
+        </Container>
+    )
 }
-
-const mapStateToProps = (state) => ({
-    users: state.app.users
-})
-
-const mapDispatchToProps = dispatch => ({
-    
-    selectUser: (user) => dispatch(actions.selectUser(user))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
