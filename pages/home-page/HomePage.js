@@ -19,7 +19,8 @@ export default function HomePage() {
     }, [])
 
     const openDetail = (user) => {
-        dispatch(createAction_UserSelected(user))
+        let action = createAction_UserSelected(user)
+        dispatch(action)
         navigation.navigate('Detail')
     }
 
